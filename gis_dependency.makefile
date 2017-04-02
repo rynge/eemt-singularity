@@ -1,7 +1,7 @@
 ##!/usr/bin/make
 
 
-TARGET := /eemt
+TARGET := /opt/eemt
 
 SHELL := /bin/bash
 
@@ -117,16 +117,16 @@ $(TARGET)/lib/libhdf5.so: $(TARGET)/lib/libz.so
 	 && ./configure --with-zlib=$(TARGET) --prefix=$(TARGET) \
 	 && make install)
 
-#&& make check \
 
 ##netcdf
 $(TARGET)/lib/libnetcdf.so:
 	(cd build-dir \
-	 && wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.tar.gz \
-	 && tar xzf netcdf-4.4.1.tar.gz \
-	 && cd netcdf-4.4.1 \
+	 && wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.1.tar.gz \
+	 && tar xzf netcdf-4.4.1.1.tar.gz \
+	 && cd netcdf-4.4.1.1 \
 	 && ./configure --prefix=$(TARGET) \
-	 && make check install)
+	 && make \
+	 && make install)
 
 
 ##PROJ.4
