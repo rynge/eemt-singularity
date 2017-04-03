@@ -3,18 +3,8 @@
 BootStrap: docker
 From: centos:6
 
-#OSVersion: 6
-#MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
-#Include: yum
-
-# If you want the updates (available at the bootstrap date) to be installed
-# inside the container during the bootstrap instead of the General Availability
-# point release (6.x) then uncomment the following line
-#UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$basearch/
-
-
-%runscript
-    echo "This is what happens when you run the container..."
+#%runscript
+#    echo "This is what happens when you run the container..."
 
 %setup
     cp gis_dependency.makefile $SINGULARITY_ROOTFS/tmp/
@@ -46,5 +36,7 @@ From: centos:6
                    R-devel graphviz
 
     cd /tmp && make -f gis_dependency.makefile
+
+    rm -rf /tmp/build-dir
 
 

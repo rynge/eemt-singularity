@@ -10,7 +10,7 @@ export CPPFLAGS := -I$(TARGET)/include
 export CFLAGS := -fPIC
 export CXXFLAGS := -fPIC
 export LDFLAGS := -L$(TARGET)/lib
-export LD_LIBRARY_PATH := $(TARGET)/lib:$(TARGET)/grass-7.0.5/lib
+export LD_LIBRARY_PATH := $(TARGET)/lib:$(TARGET)/grass-7.2.0/lib
 
 WGET_FLAGS := -nv --no-check-certificate
 
@@ -397,8 +397,8 @@ $(TARGET)/lib/gdalplugins/gdal_GRASS.so: $(TARGET)/bin/grass72 $(TARGET)/bin/gda
 	 && wget $(WGET_FLAGS) http://download.osgeo.org/gdal/2.1.0/gdal-grass-2.1.0.tar.gz \
 	 && tar xzf gdal-grass-2.1.0.tar.gz \
 	 && cd gdal-grass-2.1.0 \
-	 && export LDFLAGS="-L$(TARGET)/grass-7.0.5/lib" \
-	 && ./configure --with-gdal=$(TARGET)/bin/gdal-config --with-grass=$(TARGET)/grass-7.0.5 --prefix=$(TARGET) \
+	 && export LDFLAGS="-L$(TARGET)/grass-7.2.0/lib" \
+	 && ./configure --with-gdal=$(TARGET)/bin/gdal-config --with-grass=$(TARGET)/grass-7.2.0 --prefix=$(TARGET) \
 	 && make \
 	 && make install)
 
